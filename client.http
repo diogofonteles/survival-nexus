@@ -1,0 +1,21 @@
+@baseUrl = http://localhost:3333
+
+
+POST {{baseUrl}}/signup
+Content-Type: application/json
+
+{
+    "name": "Diogo Fonteles",
+    "email": "diogo@test.com",
+    "password": "123456"
+}
+
+###
+
+POST {{baseUrl}}/signin
+Content-Type: application/json
+
+{
+    "email": "diogo@test.com",
+    "password": "123456"
+}
