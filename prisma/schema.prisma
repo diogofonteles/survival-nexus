@@ -36,10 +36,10 @@ model Item {
 
 model Inventory {
   id         String   @id @default(uuid())
-  survivorId String
-  itemId     String
+  survivorId String   @map("survivor_id")
+  itemId     String   @map("item_id")
   quantity   Int
-  createdAt  DateTime @default(now())
+  createdAt  DateTime @default(now()) @map("created_at")
 
   survivor   Survivor  @relation(fields: [survivorId], references: [id])
   item       Item      @relation(fields: [itemId], references: [id])
@@ -52,21 +52,13 @@ model Survivor {
   name          String
   age           Int
   gender        String
-  lastLocation  Location?
   infected      Boolean
-  createdAt     DateTime  @default(now())
+  latitude      Float
+  longitude     Float
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime? @updatedAt @map("updated_at")
 
   inventory     Inventory[]
 
   @@map("survivors")
-}
-
-model Location {
-  id        String   @id @default(uuid())
-  latitude  Float
-  longitude Float
-  survivor  Survivor? @relation(fields: [survivorId], references: [id])
-  survivorId String? @unique
-
-  @@map("locations")
 }

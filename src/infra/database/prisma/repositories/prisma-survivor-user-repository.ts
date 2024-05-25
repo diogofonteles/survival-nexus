@@ -5,7 +5,7 @@ import { PrismaSurvivorUserMapper } from '../mappers/prisma-survivor-user-mapper
 import { SurvivorUserRepository } from 'src/domain/survivor/application/repositories/survivor-user-repository';
 
 @Injectable()
-export class PrismaSurvivorRepository implements SurvivorUserRepository {
+export class PrismaSurvivorUserRepository implements SurvivorUserRepository {
   constructor(private prisma: PrismaService) {}
 
   async findByEmail(email: string) {

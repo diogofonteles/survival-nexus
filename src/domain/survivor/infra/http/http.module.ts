@@ -4,11 +4,13 @@ import { SigninSurvivorUseCase } from '../../application/use-cases/signin-surviv
 import { SigninController } from './controllers/signin.controller';
 import { DatabaseModule } from 'src/infra/database/database.module';
 import { SignupController } from './controllers/signup.controller';
+import { CreateSurvivorController } from './controllers/create-survivor.controller';
+import { CreateSurvivorUseCase } from '../../application/use-cases/create-survivor.use-case';
 
 @Module({
   imports: [CryptographyModule, DatabaseModule],
-  controllers: [SignupController, SigninController],
-  providers: [SigninSurvivorUseCase],
-  exports: [SigninSurvivorUseCase],
+  controllers: [SignupController, SigninController, CreateSurvivorController],
+  providers: [SigninSurvivorUseCase, CreateSurvivorUseCase],
+  exports: [SigninSurvivorUseCase, CreateSurvivorUseCase],
 })
 export class HttpModule {}
