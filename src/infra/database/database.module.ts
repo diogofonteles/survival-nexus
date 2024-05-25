@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { PrismaService } from './prisma/prisma.service';
-import { SurvivorRepository } from 'src/domain/survivor/application/repositories/survivor-repository';
+import { SurvivorUserRepository } from 'src/domain/survivor/application/repositories/survivor-user-repository';
 import { PrismaSurvivorRepository } from './prisma/repositories/prisma-survivor-repository';
 
 @Module({
@@ -8,10 +8,10 @@ import { PrismaSurvivorRepository } from './prisma/repositories/prisma-survivor-
   providers: [
     PrismaService,
     {
-      provide: SurvivorRepository,
+      provide: SurvivorUserRepository,
       useClass: PrismaSurvivorRepository,
     },
   ],
-  exports: [PrismaService, SurvivorRepository],
+  exports: [PrismaService, SurvivorUserRepository],
 })
 export class DatabaseModule {}

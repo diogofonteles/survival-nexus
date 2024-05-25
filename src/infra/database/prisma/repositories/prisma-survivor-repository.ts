@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
-import { SurvivorEntity } from 'src/core/entities/survivor.entity';
-import { PrismaSurvivorMapper } from '../mappers/prisma-survivor-mapper';
-import { SurvivorRepository } from 'src/domain/survivor/application/repositories/survivor-repository';
+import { SurvivorUserEntity } from 'src/core/entities/survivor-user.entity';
+import { PrismaSurvivorUserMapper } from '../mappers/prisma-survivor-user-mapper';
+import { SurvivorUserRepository } from 'src/domain/survivor/application/repositories/survivor-user-repository';
 
 @Injectable()
-export class PrismaSurvivorRepository implements SurvivorRepository {
+export class PrismaSurvivorRepository implements SurvivorUserRepository {
   constructor(private prisma: PrismaService) {}
 
   async findByEmail(email: string) {
@@ -19,11 +19,11 @@ export class PrismaSurvivorRepository implements SurvivorRepository {
       return null;
     }
 
-    return PrismaSurvivorMapper.toDomain(survivor);
+    return PrismaSurvivorUserMapper.toDomain(survivor);
   }
 
-  async create(survivor: SurvivorEntity) {
-    const data = PrismaSurvivorMapper.toPrisma(survivor);
+  async create(survivor: SurvivorUserEntity) {
+    const data = PrismaSurvivorUserMapper.toPrisma(survivor);
 
     await this.prisma.user.create({
       data,

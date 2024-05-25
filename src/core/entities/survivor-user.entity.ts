@@ -1,13 +1,13 @@
 import { Entity } from './entity';
 import { UniqueEntityID } from './unique-entity-id';
 
-export interface SurvivorProps {
+export interface SurvivorUserProps {
   name: string;
   email: string;
   password: string;
 }
 
-export class SurvivorEntity extends Entity<SurvivorProps> {
+export class SurvivorUserEntity extends Entity<SurvivorUserProps> {
   get name(): string {
     return this.props.name;
   }
@@ -20,8 +20,8 @@ export class SurvivorEntity extends Entity<SurvivorProps> {
     return this.props.password;
   }
 
-  public static create(props: SurvivorProps, id?: UniqueEntityID) {
-    const survivor = new SurvivorEntity(props, id);
+  public static create(props: SurvivorUserProps, id?: UniqueEntityID) {
+    const survivor = new SurvivorUserEntity(props, id);
 
     return survivor;
   }
