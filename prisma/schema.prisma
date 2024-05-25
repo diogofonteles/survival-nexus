@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum ItemType {
+  WATER
+  FOOD
+  MEDICATION
+  CVIRUS_VACCINE
+}
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
@@ -15,4 +21,52 @@ model User {
 
   @@map("users")
 
+}
+
+model Item {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  type        ItemType
+
+  inventories Inventory[]
+
+  @@map("items")
+}
+
+model Inventory {
+  id         String   @id @default(uuid())
+  survivorId String
+  itemId     String
+  quantity   Int
+  createdAt  DateTime @default(now())
+
+  survivor   Survivor  @relation(fields: [survivorId], references: [id])
+  item       Item      @relation(fields: [itemId], references: [id])
+
+  @@map("inventories")
+}
+
+model Survivor {
+  id            String    @id @default(uuid())
+  name          String
+  age           Int
+  gender        String
+  lastLocation  Location?
+  infected      Boolean
+  createdAt     DateTime  @default(now())
+
+  inventory     Inventory[]
+
+  @@map("survivors")
+}
+
+model Location {
+  id        String   @id @default(uuid())
+  latitude  Float
+  longitude Float
+  survivor  Survivor? @relation(fields: [survivorId], references: [id])
+  survivorId String? @unique
+
+  @@map("locations")
 }
