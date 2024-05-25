@@ -1,6 +1,8 @@
 @baseUrl = http://localhost:3333
 
+@authToken = {{signin.response.body.access_token}}
 
+# @name signup
 POST {{baseUrl}}/signup
 Content-Type: application/json
 
@@ -12,10 +14,45 @@ Content-Type: application/json
 
 ###
 
+# @name signin
 POST {{baseUrl}}/signin
 Content-Type: application/json
 
 {
     "email": "diogo@test.com",
     "password": "123456"
+}
+
+# @name create_survivor
+POST {{baseUrl}}/survivors
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "name": "Diogo Fonteles",
+    "age": 41,
+    "gender": "M",
+    "lastLocation": {
+        "latitude": -3.745,
+        "longitude": -38.523
+    },
+    "inventory": [
+        {
+            "id": 1,
+            "quantity": 5
+        },
+        {
+            "id": 2,
+            "quantity": 5
+        },
+        {
+            "id": 3,
+            "quantity": 5
+        },
+        {
+            "id": 4,
+            "quantity": 5
+        }
+    ],
+    "infected": false
 }
