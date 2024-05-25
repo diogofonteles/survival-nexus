@@ -7,9 +7,9 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { hash } from 'bcryptjs';
+import { PrismaService } from 'src/infra/database/prisma/prisma.service';
 import { z } from 'zod';
-import { DatabaseService } from 'src/infra/database/DatabaseConnection';
-import { ZodValidationPipe } from 'src/pipes/zod-validation.pipe';
+import { ValidationPipe } from '../pipes/validation.pipe';
 
 const signupBodySchema = z.object({
   name: z.string(),
@@ -21,15 +21,15 @@ type SignupBodySchema = z.infer<typeof signupBodySchema>;
 
 @Controller('/signup')
 export class SignupController {
-  constructor(private database: DatabaseService) {}
+  constructor(private prisma: PrismaService) {}
 
   @Post()
   @HttpCode(201)
-  @UsePipes(new ZodValidationPipe(signupBodySchema))
+  @UsePipes(new ValidationPipe(signupBodySchema))
   async handle(@Body() body: SignupBodySchema) {
     const { name, email, password } = body;
 
-    const userWithSameEmail = await this.database.user.findUnique({
+    const userWithSameEmail = await this.prisma.user.findUnique({
       where: {
         email,
       },
@@ -41,7 +41,7 @@ export class SignupController {
 
     const hashedPassword = await hash(password, 8);
 
-    await this.database.user.create({
+    await this.prisma.user.create({
       data: {
         name,
         email,

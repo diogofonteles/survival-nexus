@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-import { DatabaseService } from './infra/database/DatabaseConnection';
-import { SignupController } from './auth/controllers/signup.controller';
+import { SignupController } from './domain/survivor/infra/http/controllers/signup.controller';
 import { ConfigModule } from '@nestjs/config';
 import { envSchema } from './env';
-import { AuthModule } from './auth/auth.module';
-import { SigninController } from './auth/controllers/signin.controller';
+import { AuthModule } from './infra/auth/auth.module';
+import { SigninController } from './domain/survivor/infra/http/controllers/signin.controller';
+import { PrismaService } from './infra/database/prisma/prisma.service';
+import { HttpModule } from './domain/survivor/infra/http/http.module';
 
 @Module({
   imports: [
@@ -13,8 +14,9 @@ import { SigninController } from './auth/controllers/signin.controller';
       isGlobal: true,
     }),
     AuthModule,
+    HttpModule,
   ],
   controllers: [SignupController, SigninController],
-  providers: [DatabaseService],
+  providers: [PrismaService],
 })
 export class AppModule {}
