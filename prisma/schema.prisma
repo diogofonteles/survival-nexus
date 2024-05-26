@@ -31,6 +31,7 @@ model Inventory {
   itemId     String   @map("item_id")
   quantity   Int
   createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime? @updatedAt @map("updated_at")
 
   survivor   Survivor  @relation(fields: [survivorId], references: [id])
   item       Item      @relation(fields: [itemId], references: [id])

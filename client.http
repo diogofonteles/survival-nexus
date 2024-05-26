@@ -2,18 +2,6 @@
 
 @authToken = {{signin.response.body.access_token}}
 
-# @name signup
-POST {{baseUrl}}/signup
-Content-Type: application/json
-
-{
-    "name": "Diogo Fonteles",
-    "email": "diogo@test.com",
-    "password": "123456"
-}
-
-###
-
 # @name signin
 POST {{baseUrl}}/signin
 Content-Type: application/json
@@ -62,13 +50,15 @@ Authorization: Bearer {{authToken}}
 }
 
 ###
-# @name trade_items
+
+# @name trade
 POST {{baseUrl}}/trade-items
 Content-Type: application/json
-Authorization Bearer {{authToken}}
+Authorization: Baerer {{authToken}}
 
 {
-    "userId": 1,
-    "survivorRequestedId": 2,
-    "itemId": 1,
+    "userId": "d846d16b-b236-4a15-b502-01f82fe2c2f9",
+    "survivorRequestedId": "69bf08f9-14af-43c8-aeee-85b1910a22fb",
+    "itemId": "57611bfa-0638-4547-ae4b-08fdba1855ce",
+    "quantity": 1
 }
