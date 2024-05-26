@@ -19,7 +19,7 @@ POST {{baseUrl}}/signin
 Content-Type: application/json
 
 {
-    "email": "diogo@test.com",
+    "email": "daniel@test.com",
     "password": "123456"
 }
 
@@ -31,7 +31,9 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "name": "Diogo Fonteles",
+    "name": "Jessica Fonteles",
+    "email": "jessica@test.com",
+    "password": "123456",
     "age": 41,
     "gender": "M",
     "lastLocation": {
@@ -57,4 +59,16 @@ Authorization: Bearer {{authToken}}
         }
     ],
     "infected": false
+}
+
+###
+# @name trade_items
+POST {{baseUrl}}/trade-items
+Content-Type: application/json
+Authorization Bearer {{authToken}}
+
+{
+    "userId": 1,
+    "survivorRequestedId": 2,
+    "itemId": 1,
 }

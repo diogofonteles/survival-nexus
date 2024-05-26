@@ -3,7 +3,7 @@ import { WrongCredentialsError } from './errors/wrong-credentials-error';
 import { Injectable } from '@nestjs/common';
 import { HashComparer } from '../cryptography/hash-comparer';
 import { Encrypter } from '../cryptography/encrypter';
-import { SurvivorUserRepository } from '../repositories/survivor-user-repository';
+import { SurvivorsRepository } from '../repositories/survivors-repository';
 
 interface SigninSurvivorUseCaseRequest {
   email: string;
@@ -20,7 +20,7 @@ type SigninSurvivorUseCaseResponse = Either<
 @Injectable()
 export class SigninSurvivorUseCase {
   constructor(
-    private survivorRepository: SurvivorUserRepository,
+    private survivorRepository: SurvivorsRepository,
     private hashComparer: HashComparer,
     private encrypter: Encrypter,
   ) {}

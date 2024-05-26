@@ -5,6 +5,8 @@ import { SurvivorsRepository } from '../repositories/survivors-repository';
 
 interface CreateSurvivorUseCaseRequest {
   name: string;
+  email: string;
+  password: string;
   age: number;
   gender: string;
   lastLocation: {
@@ -27,6 +29,8 @@ export class CreateSurvivorUseCase {
 
   async execute({
     name,
+    email,
+    password,
     age,
     gender,
     lastLocation,
@@ -34,6 +38,8 @@ export class CreateSurvivorUseCase {
   }: CreateSurvivorUseCaseRequest): Promise<CreateSurvivorUseCaseResponse> {
     const survivor = await Survivor.create({
       name,
+      email,
+      password,
       age,
       gender,
       infected,

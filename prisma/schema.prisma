@@ -13,15 +13,6 @@ enum ItemType {
   MEDICATION
   CVIRUS_VACCINE
 }
-model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  password  String?
-
-  @@map("users")
-
-}
 
 model Item {
   id          String   @id @default(uuid())
@@ -49,7 +40,9 @@ model Inventory {
 
 model Survivor {
   id            String    @id @default(uuid())
+  email         String    @unique @default("test@email.com")
   name          String
+  password      String
   age           Int
   gender        String
   infected      Boolean

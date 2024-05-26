@@ -1,8 +1,12 @@
+import { ItemInventorySurvivor } from '../types/item-inventory-survivor';
 import { Optional } from '../types/optional';
-import { AggregateRoot } from './aggregate-root';
+import { Entity } from './entity';
+import { UniqueEntityID } from './unique-entity-id';
 
 export interface SurvivorProps {
   name: string;
+  email: string;
+  password: string;
   age: number;
   gender: string;
   lastLocation: {
@@ -12,15 +16,34 @@ export interface SurvivorProps {
   infected: boolean;
   createdAt: Date;
   updatedAt?: Date;
+  inventory?: ItemInventorySurvivor[];
 }
 
-export class Survivor extends AggregateRoot<SurvivorProps> {
+export class Survivor extends Entity<SurvivorProps> {
   get name(): string {
     return this.props.name;
   }
 
   set name(value: string) {
     this.props.name = value;
+    this.touch();
+  }
+
+  get email(): string {
+    return this.props.email;
+  }
+
+  set email(value: string) {
+    this.props.email = value;
+    this.touch();
+  }
+
+  get password(): string {
+    return this.props.password;
+  }
+
+  set password(value: string) {
+    this.props.password = value;
     this.touch();
   }
 
@@ -60,15 +83,35 @@ export class Survivor extends AggregateRoot<SurvivorProps> {
     this.touch();
   }
 
+  get inventory(): ItemInventorySurvivor[] {
+    return this.props.inventory || [];
+  }
+
+  set inventory(value: ItemInventorySurvivor[]) {
+    this.props.inventory = value;
+    this.touch();
+  }
+
+  set itemInventory(item: ItemInventorySurvivor) {
+    this.props.inventory = [...this.inventory, item];
+    this.touch();
+  }
+
   private touch() {
     this.props.updatedAt = new Date();
   }
 
-  static create(props: Optional<SurvivorProps, 'createdAt'>): Survivor {
-    const survivor = new Survivor({
-      ...props,
-      createdAt: props.createdAt || new Date(),
-    });
+  static create(
+    props: Optional<SurvivorProps, 'createdAt'>,
+    id?: UniqueEntityID,
+  ): Survivor {
+    const survivor = new Survivor(
+      {
+        ...props,
+        createdAt: props.createdAt || new Date(),
+      },
+      id,
+    );
 
     return survivor;
   }

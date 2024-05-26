@@ -22,6 +22,20 @@ export class PrismaSurvivorsRepository implements SurvivorsRepository {
     return PrismaSurvivorMapper.toDomain(survivor);
   }
 
+  async findByEmail(email: string): Promise<Survivor | null> {
+    const survivor = await this.prisma.survivor.findFirst({
+      where: {
+        email,
+      },
+    });
+
+    if (!survivor) {
+      return null;
+    }
+
+    return PrismaSurvivorMapper.toDomain(survivor);
+  }
+
   async findByName(name: string): Promise<Survivor | null> {
     const survivor = await this.prisma.survivor.findFirst({
       where: {
