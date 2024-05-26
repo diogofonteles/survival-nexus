@@ -42,9 +42,6 @@ export class PrismaInventoryRepository implements InventoryRepository {
         survivorId,
       },
     });
-    console.log('itemId', itemId);
-    console.log('survivorId', survivorId);
-    console.log('inventory', inventory);
 
     if (!inventory) {
       return null;

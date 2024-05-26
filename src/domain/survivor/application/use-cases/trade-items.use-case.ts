@@ -37,16 +37,11 @@ export class TradeItemsUseCase {
       return left('User not found');
     }
 
-    console.log('survivor', survivor);
-    console.log('survivorRequested', survivorRequested);
-
     const itemRequested =
       await this.inventoryRepository.findByItemIdAndSurvivorId(
         itemId,
         survivorRequestedId,
       );
-
-    console.log('itemRequested', itemRequested);
 
     if (!itemRequested || itemRequested.quantity <= 1) {
       return left('Item not found or quantity is less than 1');

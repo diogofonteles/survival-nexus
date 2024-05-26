@@ -56,8 +56,6 @@ export class PrismaSurvivorsRepository implements SurvivorsRepository {
       take: 10,
     });
 
-    console.log(survivors);
-
     return survivors.map(PrismaSurvivorMapper.toDomain);
   }
 
