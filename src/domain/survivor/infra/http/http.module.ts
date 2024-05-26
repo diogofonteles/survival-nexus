@@ -7,6 +7,8 @@ import { CreateSurvivorController } from './controllers/create-survivor.controll
 import { CreateSurvivorUseCase } from '../../application/use-cases/create-survivor.use-case';
 import { TradeItemsController } from './controllers/trade-items.controller';
 import { TradeItemsUseCase } from '../../application/use-cases/trade-items.use-case';
+import { FetchSurvivorsController } from './controllers/fetch-survivors.controllet';
+import { FetchSurvivorsUseCase } from '../../application/use-cases/fetch-survivors.use-case';
 
 @Module({
   imports: [CryptographyModule, DatabaseModule],
@@ -14,8 +16,19 @@ import { TradeItemsUseCase } from '../../application/use-cases/trade-items.use-c
     SigninController,
     CreateSurvivorController,
     TradeItemsController,
+    FetchSurvivorsController,
   ],
-  providers: [SigninSurvivorUseCase, CreateSurvivorUseCase, TradeItemsUseCase],
-  exports: [SigninSurvivorUseCase, CreateSurvivorUseCase, TradeItemsUseCase],
+  providers: [
+    SigninSurvivorUseCase,
+    CreateSurvivorUseCase,
+    TradeItemsUseCase,
+    FetchSurvivorsUseCase,
+  ],
+  exports: [
+    SigninSurvivorUseCase,
+    CreateSurvivorUseCase,
+    TradeItemsUseCase,
+    FetchSurvivorsUseCase,
+  ],
 })
 export class HttpModule {}

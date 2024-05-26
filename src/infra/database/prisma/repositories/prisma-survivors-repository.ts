@@ -50,6 +50,17 @@ export class PrismaSurvivorsRepository implements SurvivorsRepository {
     return PrismaSurvivorMapper.toDomain(survivor);
   }
 
+  async fetch(page: number): Promise<Survivor[]> {
+    const survivors = await this.prisma.survivor.findMany({
+      skip: (page - 1) * 10,
+      take: 10,
+    });
+
+    console.log(survivors);
+
+    return survivors.map(PrismaSurvivorMapper.toDomain);
+  }
+
   async create(survivor: Survivor): Promise<void> {
     const data = PrismaSurvivorMapper.toPrisma(survivor);
 

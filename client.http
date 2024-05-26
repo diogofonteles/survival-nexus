@@ -28,24 +28,6 @@ Authorization: Bearer {{authToken}}
         "latitude": -3.745,
         "longitude": -38.523
     },
-    "inventory": [
-        {
-            "id": 1,
-            "quantity": 5
-        },
-        {
-            "id": 2,
-            "quantity": 5
-        },
-        {
-            "id": 3,
-            "quantity": 5
-        },
-        {
-            "id": 4,
-            "quantity": 5
-        }
-    ],
     "infected": false
 }
 
@@ -62,3 +44,10 @@ Authorization: Baerer {{authToken}}
     "itemId": "57611bfa-0638-4547-ae4b-08fdba1855ce",
     "quantity": 1
 }
+
+###
+
+# @name fetch_survivors
+GET {{baseUrl}}/survivors/list?page=1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
