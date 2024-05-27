@@ -4,9 +4,10 @@ import { Entity } from './entity';
 import { UniqueEntityID } from './unique-entity-id';
 
 export interface SurvivorProps {
+  id?: UniqueEntityID | string;
   name: string;
   email: string;
-  password: string;
+  password?: string;
   age: number;
   gender: string;
   lastLocation: {
@@ -39,7 +40,10 @@ export class Survivor extends Entity<SurvivorProps> {
   }
 
   get password(): string {
-    return this.props.password;
+    if (this.props.password) {
+      return this.props.password;
+    }
+    return '';
   }
 
   set password(value: string) {
@@ -102,7 +106,7 @@ export class Survivor extends Entity<SurvivorProps> {
   }
 
   static create(
-    props: Optional<SurvivorProps, 'createdAt'>,
+    props: Optional<SurvivorProps, 'createdAt' | 'password'>,
     id?: UniqueEntityID,
   ): Survivor {
     const survivor = new Survivor(

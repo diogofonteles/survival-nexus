@@ -70,10 +70,16 @@ export class PrismaSurvivorsRepository implements SurvivorsRepository {
   async save(survivor: Survivor): Promise<void> {
     const data = PrismaSurvivorMapper.toPrisma(survivor);
 
+    const existingSurvivor = await this.prisma.survivor.findUnique({
+      where: { id: data.id },
+    });
+
+    if (!existingSurvivor) {
+      throw new Error('Survivor not found');
+    }
+
     await this.prisma.survivor.update({
-      where: {
-        id: survivor.id.toString(),
-      },
+      where: { id: survivor.id.toString() },
       data,
     });
   }

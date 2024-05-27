@@ -51,3 +51,24 @@ Authorization: Baerer {{authToken}}
 GET {{baseUrl}}/survivors/list?page=1
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
+
+
+###
+
+# @name update_survivor
+PUT {{baseUrl}}/survivors
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "id": "43915391-f9c5-44b5-8d30-e28aad01e1b4",
+    "name": "Jessica Garcia Fonteles",
+    "email": "jessica@test.com",
+    "age": 31,
+    "gender": "F",
+    "lastLocation": {
+        "latitude": -1.745,
+        "longitude": -48.523
+    },
+    "infected": false
+}
