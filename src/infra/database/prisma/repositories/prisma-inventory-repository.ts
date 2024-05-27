@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
-import { Inventory } from 'src/core/entities/inventory.entity';
+import { Inventory } from 'src/domain/survivor/enterprise/entities/inventory.entity';
 import { InventoryRepository } from 'src/domain/survivor/application/repositories/inventory-repository';
 import { PrismaInventoryMapper } from '../mappers/prisma-inventory-mapper';
 

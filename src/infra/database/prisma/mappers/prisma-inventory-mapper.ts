@@ -1,5 +1,5 @@
 import { Inventory as PrismaInventory, Prisma } from '@prisma/client';
-import { Inventory } from 'src/core/entities/inventory.entity';
+import { Inventory } from 'src/domain/survivor/enterprise/entities/inventory.entity';
 import { UniqueEntityID } from 'src/core/entities/unique-entity-id';
 
 export class PrismaInventoryMapper {

@@ -1,7 +1,7 @@
-import { ItemInventorySurvivor } from '../types/item-inventory-survivor';
-import { Optional } from '../types/optional';
-import { Entity } from './entity';
-import { UniqueEntityID } from './unique-entity-id';
+import { ItemInventorySurvivor } from '../../../../core/types/item-inventory-survivor';
+import { Optional } from '../../../../core/types/optional';
+import { Entity } from '../../../../core/entities/entity';
+import { UniqueEntityID } from '../../../../core/entities/unique-entity-id';
 
 export interface SurvivorProps {
   id?: UniqueEntityID | string;

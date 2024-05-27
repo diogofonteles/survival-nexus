@@ -1,4 +1,4 @@
-import { Survivor } from 'src/core/entities/survivor.entity';
+import { Survivor } from 'src/domain/survivor/enterprise/entities/survivor.entity';
 
 export abstract class SurvivorsRepository {
   abstract fetch(page: number): Promise<Survivor[]>;

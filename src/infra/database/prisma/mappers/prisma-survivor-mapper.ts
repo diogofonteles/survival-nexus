@@ -1,5 +1,5 @@
 import { Survivor as PrismaSurvivor, Prisma } from '@prisma/client';
-import { Survivor } from 'src/core/entities/survivor.entity';
+import { Survivor } from 'src/domain/survivor/enterprise/entities/survivor.entity';
 import { UniqueEntityID } from 'src/core/entities/unique-entity-id';
 
 export class PrismaSurvivorMapper {

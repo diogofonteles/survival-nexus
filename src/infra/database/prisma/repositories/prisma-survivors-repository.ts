@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { SurvivorsRepository } from 'src/domain/survivor/application/repositories/survivors-repository';
-import { Survivor } from 'src/core/entities/survivor.entity';
+import { Survivor } from 'src/domain/survivor/enterprise/entities/survivor.entity';
 import { PrismaSurvivorMapper } from '../mappers/prisma-survivor-mapper';
 
 @Injectable()

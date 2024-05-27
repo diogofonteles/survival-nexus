@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Survivor } from 'src/core/entities/survivor.entity';
+import { Survivor } from 'src/domain/survivor/enterprise/entities/survivor.entity';
 import { Either, right } from 'src/core/types/either';
 import { SurvivorsRepository } from '../repositories/survivors-repository';
 

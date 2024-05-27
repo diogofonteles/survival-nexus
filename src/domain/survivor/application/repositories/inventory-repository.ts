@@ -1,4 +1,4 @@
-import { Inventory } from 'src/core/entities/inventory.entity';
+import { Inventory } from 'src/domain/survivor/enterprise/entities/inventory.entity';
 
 export abstract class InventoryRepository {
   abstract findById(id: string): Promise<Inventory | null>;

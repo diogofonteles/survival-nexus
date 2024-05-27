@@ -70,5 +70,12 @@ Authorization: Bearer {{authToken}}
         "latitude": -1.745,
         "longitude": -48.523
     },
-    "infected": false
+    "infected": true
 }
+
+###
+
+# @name report_survivors
+GET {{baseUrl}}/survivors/report
+Content-Type: application/json
+Authorization: Bearer {{authToken}}

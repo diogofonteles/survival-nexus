@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Either, left, right } from 'src/core/types/either';
 import { SurvivorsRepository } from '../repositories/survivors-repository';
 import { InventoryRepository } from '../repositories/inventory-repository';
-import { Inventory } from 'src/core/entities/inventory.entity';
+import { Inventory } from 'src/domain/survivor/enterprise/entities/inventory.entity';
 
 interface TradeItemsUseCaseRequest {
   userId: string;
