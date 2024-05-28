@@ -6,6 +6,8 @@ import { InventoryRepository } from 'src/domain/survivor/application/repositorie
 import { PrismaInventoryRepository } from './prisma/repositories/prisma-inventory-repository';
 import { ReportSurvivorsRepository } from 'src/domain/survivor/application/repositories/report-survivors-repository';
 import { PrismaReportSurvivorsRepository } from './prisma/repositories/prisma-report-survivors-repository';
+import { ReportInventoryRepository } from 'src/domain/survivor/application/repositories/report-inventory-repository';
+import { PrismaReportInventoryRepository } from './prisma/repositories/prisma-report-inventory-repository';
 
 @Module({
   imports: [],
@@ -23,12 +25,17 @@ import { PrismaReportSurvivorsRepository } from './prisma/repositories/prisma-re
       provide: ReportSurvivorsRepository,
       useClass: PrismaReportSurvivorsRepository,
     },
+    {
+      provide: ReportInventoryRepository,
+      useClass: PrismaReportInventoryRepository,
+    },
   ],
   exports: [
     PrismaService,
     SurvivorsRepository,
     InventoryRepository,
     ReportSurvivorsRepository,
+    ReportInventoryRepository,
   ],
 })
 export class DatabaseModule {}

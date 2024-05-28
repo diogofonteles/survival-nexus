@@ -79,3 +79,10 @@ Authorization: Bearer {{authToken}}
 GET {{baseUrl}}/survivors/report
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
+
+###
+
+# @name report_inventory
+GET {{baseUrl}}/inventory/report
+Content-Type: application/json
+Authorization: Bearer {{authToken}}

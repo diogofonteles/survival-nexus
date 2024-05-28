@@ -13,6 +13,8 @@ import { UpdateSurvivorController } from './controllers/update-survivor.controll
 import { UpdateSurvivorUseCase } from '../../application/use-cases/update-survivor.use-case';
 import { FetchReportSurvivorsReportController } from './controllers/fetch-report-survivors-report.controller';
 import { FetchReportSurvivorsUseCase } from '../../application/use-cases/fetch-report-survivors.use-case';
+import { FetchReportInventoryController } from './controllers/fetch-report-inventory.controller';
+import { FetchReportInventoryUseCase } from '../../application/use-cases/fetch-report-inventory.use-case';
 
 @Module({
   imports: [CryptographyModule, DatabaseModule],
@@ -23,6 +25,7 @@ import { FetchReportSurvivorsUseCase } from '../../application/use-cases/fetch-r
     FetchSurvivorsController,
     UpdateSurvivorController,
     FetchReportSurvivorsReportController,
+    FetchReportInventoryController,
   ],
   providers: [
     SigninSurvivorUseCase,
@@ -31,6 +34,7 @@ import { FetchReportSurvivorsUseCase } from '../../application/use-cases/fetch-r
     FetchSurvivorsUseCase,
     UpdateSurvivorUseCase,
     FetchReportSurvivorsUseCase,
+    FetchReportInventoryUseCase,
   ],
   exports: [
     SigninSurvivorUseCase,
@@ -39,6 +43,7 @@ import { FetchReportSurvivorsUseCase } from '../../application/use-cases/fetch-r
     FetchSurvivorsUseCase,
     UpdateSurvivorUseCase,
     FetchReportSurvivorsUseCase,
+    FetchReportInventoryUseCase,
   ],
 })
 export class HttpModule {}
