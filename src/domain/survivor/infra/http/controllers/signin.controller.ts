@@ -42,10 +42,12 @@ export class SigninController {
       }
     }
 
-    const accessToken = result.value;
+    const accessToken = result.value.accessToken;
+    const name = result.value.name;
 
     return {
       access_token: accessToken,
+      name,
     };
   }
 }

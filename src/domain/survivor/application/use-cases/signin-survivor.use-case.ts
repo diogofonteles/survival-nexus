@@ -14,6 +14,7 @@ type SigninSurvivorUseCaseResponse = Either<
   WrongCredentialsError,
   {
     accessToken: string;
+    name: string;
   }
 >;
 
@@ -48,8 +49,11 @@ export class SigninSurvivorUseCase {
       sub: survivor.id.toString(),
     });
 
+    const name = survivor.name;
+
     return right({
       accessToken,
+      name,
     });
   }
 }
