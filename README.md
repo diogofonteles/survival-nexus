@@ -30,6 +30,13 @@
 
 ```bash
 $ pnpm install
+
+# instance Postgres
+$ docker-compose up -d
+
+# setup prisma
+$ pnpm prisma generate
+$ pnpm prisma migrate dev
 ```
 
 ## Running the app
@@ -43,6 +50,8 @@ $ pnpm run start:dev
 
 # production mode
 $ pnpm run start:prod
+
+To use the client.http file to call the api’s, installl Rest Client extension in vscode
 ```
 
 ## Test
